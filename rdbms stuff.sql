@@ -257,10 +257,13 @@ create table child (c int, d char(1),
 
 
 
+--key = specifies 'WHAT'
+--query = specifies 'HOW'
+
 --emp E, dept D로 별명지으기 가능
 set autot on; -- 좀더 자세히 보기위해
 select E.ename, E.sal from emp E, dept D where E.deptno = D.deptno and D.loc = 'NEW YORK';
--- Execution Plan: 어덯게 값을 찾았는지 서술. 오라클 DBMS가 자동으로 플랜함. e.g.) plan hash value
+-- Execution Plan: 어덯게 값을 찾을지 서술.('HOW') 오라클 DBMS가 여러 가능한 'HOW'에서 최적의 옵션을 자동으로 선택함. e.g.) hash value
 -- Statistics: 서버에서 plan을 실행할때 쓰인 리소스들을 조사해서 서술.
 set autot off;
 
