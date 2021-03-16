@@ -1,0 +1,22 @@
+LBA는 scsi부터 만들어진 개념. 하드디스크의 섹터번호를 나타냄. 
+
+LBA logical -> physical 변환 FTL
+in place 업데이트 안되므로 GC사용
+overwrite가 안되서 FTL은 invalid 체크하고 다른 주소에 저장.
+invalid를 지워주기 위해 GC함.
+LBA는 바뀌지 않음.
+그러므로 LBA만 보이는 운영체제 파일시스템은 모름.
+
+ssd concurrency 찾아보기
+
+direct IO VS fsync = ssd concurrency랑 상관없음 확인해보기
+
+page clustering: page 탐색시간을 줄이기위해 인접한 page들을 2제곱으로 병합시키는 방법.
+ksm: kernel samepage merging
+
+rmap: reverse mapping = anon vmas. 페이지캐시가 아닌 vma들.
+파일을 참조해서 탐색할수 없고, 메모리디스크립터에서 직접 reverse mapping하여 찾아야한다.
+
+anon_vma: 모든(프로세스들의) anon vma들을 연결한 list. 스핀락도 정의된 데이터구조.
+
+
